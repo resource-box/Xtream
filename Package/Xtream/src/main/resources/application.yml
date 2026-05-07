@@ -1,5 +1,0 @@
-LMAX:
-  list:
-    size: 12
-  buffer:
-    multiplier: 2

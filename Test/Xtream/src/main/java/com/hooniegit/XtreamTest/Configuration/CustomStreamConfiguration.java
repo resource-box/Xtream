@@ -1,17 +1,19 @@
-package com.hooniegit.Xtream.Configuration;
+package com.hooniegit.XtreamTest.Configuration;
 
 import java.util.List;
 
+import com.hooniegit.Xtream.Tools.Handler;
+import com.hooniegit.Xtream.Tools.StreamAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.hooniegit.Xtream.Tools.Handler;
-import com.hooniegit.Xtream.Tools.StreamAutoConfiguration;
-import com.hooniegit.Xtream.Configuration.DataClass.Sample;
-import com.hooniegit.Xtream.Configuration.Handlers.Handler01;
-import com.hooniegit.Xtream.Configuration.Handlers.Handler02;
+import com.hooniegit.XtreamTest.Configuration.DataClass.Sample;
+import com.hooniegit.XtreamTest.Configuration.Handlers.Handler01;
+import com.hooniegit.XtreamTest.Configuration.Handlers.Handler02;
+import org.springframework.context.annotation.Import;
 
 @Configuration
+@Import(StreamAutoConfiguration.class)
 public class CustomStreamConfiguration {
 
     @Bean

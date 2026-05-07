@@ -22,7 +22,7 @@ public class Stream<T> {
                 Event::new,
                 1024 * bufferMultiplier,
                 DaemonThreadFactory.INSTANCE,
-                ProducerType.SINGLE,
+                ProducerType.MULTI,
                 new SleepingWaitStrategy()
         );
 
@@ -42,6 +42,16 @@ public class Stream<T> {
 
         disruptor.start();
         ringBuffer = disruptor.getRingBuffer();
+    }
+
+    /**
+     * <신규></신규>
+     * Check if the RingBuffer has available capacity.
+     * @param requiredCapacity the number of slots required
+     * @return true if there is enough capacity, false otherwise
+     */
+    public boolean hasAvailableCapacity(int requiredCapacity) {
+        return ringBuffer.hasAvailableCapacity(requiredCapacity);
     }
 
     /**

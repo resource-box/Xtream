@@ -1,7 +1,7 @@
 package com.hooniegit.Xtream.Tools;
 
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.lang.reflect.Array;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -26,28 +26,30 @@ public class StreamAutoConfiguration<T> {
     }
 
     /**
-     * Stream List Bean
+     * Stream Array Bean
      * @param streamBuilder
      * @param streamSize
      * @return
      */
     @Bean
-    public List<Stream<T>> streamList(StreamBuilder<T> streamBuilder, @Value("${LMAX.list.size}") int streamSize) {
-        List<Stream<T>> streamList = new CopyOnWriteArrayList<>();
+    public Stream<T>[] streamArray(StreamBuilder<T> streamBuilder, @Value("${LMAX.list.size}") int streamSize) {
+        // Use reflection to create an array of a generic type
+        @SuppressWarnings("unchecked")
+        Stream<T>[] streamArray = (Stream<T>[]) Array.newInstance(Stream.class, streamSize);
         for (int i = 0; i < streamSize; i++) {
-            streamList.add(streamBuilder.build());
+            streamArray[i] = streamBuilder.build();
         }
-        return streamList;
+        return streamArray;
     }
 
     /**
      * StreamManager Bean
-     * @param streamList
+     * @param streamArray
      * @return
      */
     @Bean
-    public StreamManager<T> streamManager(List<Stream<T>> streamList) {
-        return new StreamManager<>(streamList);
+    public StreamManager<T> streamManager(Stream<T>[] streamArray) {
+        return new StreamManager<>(streamArray);
     }
     
 }

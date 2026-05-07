@@ -1,6 +1,6 @@
 spring:
   application:
-    name: XtreamApplication
+    name: XtreamTestApplication
 
 LMAX:
   list:

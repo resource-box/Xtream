@@ -1,11 +1,8 @@
-package com.hooniegit.Xtream.Configuration.Handlers;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.hooniegit.XtreamTest.Configuration.Handlers;
 
 import com.hooniegit.Xtream.Tools.Event;
 import com.hooniegit.Xtream.Tools.Handler;
-import com.hooniegit.Xtream.Configuration.DataClass.Sample;
+import com.hooniegit.XtreamTest.Configuration.DataClass.Sample;
 
 import lombok.Getter;
 
@@ -25,10 +22,7 @@ public class Handler01 extends Handler<Sample> {
 	 */
 	@Override
     protected void process(Event<Sample> event) {
-		List<Integer> list = new ArrayList<>();
-		for (int i=0; i<20000; i++) {
-			list.add(i);
-		}
-    }
+//		System.out.println("Handler 01 Started");
+	}
 
 }
